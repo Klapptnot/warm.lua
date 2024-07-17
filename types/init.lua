@@ -1,0 +1,35 @@
+-- Util aliases
+---@alias AnyIndex number @ Use it to access any index in other aliases
+---@alias AnyField any @ Use it to access any arbitrary fields
+---@diagnostic disable-next-line: undefined-doc-name
+---@alias Null table<AnyField, NullType> @ Use it to deny any arbitrary values aside from the requested ones
+---@alias some number|string|boolean|table|function|thread|userdata
+
+-- Valid types for items in a list
+---@alias DataType
+---| "nil"
+---| "number"
+---| "string"
+---| "boolean"
+---| "table"
+---| "function"
+---| "thread"
+---| "userdata"
+---|>"some" @ Any value but nil
+
+-- The error message format string
+---@alias ArgErrMsg string
+-- Default argument value (Has not type check)
+---@alias ArgDefVal any
+-- Argument expected type (or a list of)
+---@alias ArgValType DataType[] | DataType
+-- List of expected values for argument
+---@alias ArgExpValues any[]
+-- A argument scheme entry
+---@alias ArgScheme DataType|{[1]:ArgValType, aev:ArgExpValues?, ave:ArgErrMsg?, ate:ArgErrMsg?, def:ArgDefVal?}
+-- List item scheme
+---@alias ItemScheme DataType|{[1]:ArgValType, aev:ArgExpValues?, ate:ArgErrMsg?, ave:ArgErrMsg?}
+-- List of argument schemes
+---@alias ArgParseScheme {[AnyIndex]:ArgScheme, ate:ArgErrMsg?, ave:ArgErrMsg?, sep:string?}
+-- List of item schemes
+---@alias ListScheme {[AnyIndex]:ItemScheme, ate:ArgErrMsg?, ave:ArgErrMsg?, sep:string?}
