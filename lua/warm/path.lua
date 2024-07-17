@@ -44,9 +44,6 @@ end
 -- Only Neovim
 ---@param path string
 ---@return boolean
-function main.exists(path)
-  local stat, _ = vim.loop.fs_stat(path)
-  return stat ~= nil
-end
+function main.exists(path) return vim.uv.fs_stat(path) ~= nil end
 
 return main
