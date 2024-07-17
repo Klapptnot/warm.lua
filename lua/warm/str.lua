@@ -115,7 +115,7 @@ function main.chars(s)
   return chars
 end
 
--- Check if string has certain string or character
+-- Substring checks
 -- ```lua
 -- str.has("abcdef", "def") -- true
 -- str.has("a,b,c,d", "c") -- true
@@ -124,7 +124,7 @@ end
 ---@param s string
 ---@param str string
 ---@return boolean
-function main.has(s, str) return string.find(s, main.pesc(str)) ~= nil end
+function main.has(s, str) return string.find(s, str, 1, true) ~= nil end
 
 ---Add padding to s to be n length, default pad right
 ---@param s string
@@ -213,8 +213,5 @@ function main.format(s, ...)
     :gsub("&!:(.-)::;", "{%1}")
   return s
 end
-
-main.lower = string.lower
-main.upper = string.upper
 
 return main
