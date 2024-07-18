@@ -2,6 +2,12 @@
 
 local main = {}
 
+-- back-compat
+if table.unpack == nil then
+  ---@diagnostic disable-next-line: deprecated
+  table.unpack = unpack
+end
+
 function main.range(i, j)
   main.validate({ "number", "number" }, { i, j })
   local rnext = function(i) return i + 1 end
